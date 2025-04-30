@@ -1,0 +1,17 @@
+.signup-form{
+    width: 30%!important;
+    margin-inline:auto;
+    border: 1px solid grey;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-block-end: 2rem;
+}
+
+.signup-form>form>.row{
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form>form{
+    width:100%;
+}

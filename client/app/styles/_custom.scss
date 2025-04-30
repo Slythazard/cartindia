@@ -1,0 +1,44 @@
+// Here you can add other styles
+.wrapper{
+    padding: 0;
+}
+
+.footer{
+    background: #2A2E45;
+    
+}
+
+.header{
+    border: none!important;
+    >.container{
+        background: transparent;
+    }
+}
+
+.footer-block{
+    border:none;
+}
+
+.footer-link{
+    >a{
+        color: white!important;
+    }
+}
+
+img{
+    width: 100%!important;
+    height: 100%!important;
+    object-fit: fill!important;
+    object-position: center!important;
+}
+
+#cart-list-image{
+    width:4.5rem!important;
+    height:4.5rem!important;
+    object-fit: cover!important;
+    object-position: center!important;
+}
+
+// .slick-list{
+//     display: none!important;
+// }

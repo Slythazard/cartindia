@@ -1,0 +1,113 @@
+.hero-container {
+    position: relative !important;
+    /* margin-top: 2rem !important; */
+    width: 100% !important;
+    max-width: 100%!important;
+    height: 100% !important;
+  }
+  
+*{
+  padding: 0;
+}
+  .hero-slide {
+    height: 80vh !important;
+    width: 100% !important;
+    background-color: #1D4ED8 !important;
+    position: relative !important;
+  }
+  
+  .hero-slide img {
+    width: 100% !important;
+    height:100%!important;
+    object-fit:cover !important;
+  }
+  
+  .hero-title {
+    position: absolute !important;
+    z-index: 2 !important;
+    top: 20% !important;
+    left: 20% !important;
+    font-size: 5rem !important;
+    color: #ffffff !important;
+  }
+  
+  .hero-subtitle {
+    position: absolute !important;
+    z-index: 2 !important;
+    top: 40% !important;
+    left: 20% !important;
+    color: #ffffff !important;
+  }
+  .custom-paging{
+    position: absolute!important;
+    bottom: 3.5rem!important;
+    width: 1.5rem!important;
+    height: 1.5rem!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+    cursor: pointer!important;
+  }
+
+  .custom-paging .dot-default {
+    display: block;
+  }
+  
+  .custom-paging .dot-hover {
+    display: none;
+  }
+  
+  .custom-paging:hover .dot-default {
+    display: none;
+  }
+
+  .custom-paging:hover .dot-hover {
+    display: block;
+  }
+  
+  @media (min-width:1200px) {
+    .container{
+      max-width: 90%!important;
+    }
+  } 
+
+.slick-slider{
+  position: relative!important;
+  >.slick-next,.slick-prev{
+    display: none;
+  }
+}
+
+.slick-slider:hover{
+  >.slick-next,.slick-prev{
+    display: block !important;;
+  }
+}
+
+.slick-prev,.slick-next{
+  position: absolute!important;
+  z-index: 10!important;
+  >svg{
+    fill:white!important;
+  }
+}
+
+.slick-next{
+  top: 50%!important;
+  transform: translateY(-50%)!important;
+  left:97%!important;
+}
+
+.slick-prev{
+    top: 50%!important;
+    transform: translateY(-50%)!important;
+    left:1%!important;
+}
+
+.slick-prev::before{
+  display: none!important;
+}
+
+.slick-next::before{
+  display: none!important;
+}

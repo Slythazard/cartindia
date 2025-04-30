@@ -1,0 +1,49 @@
+.product-card{
+    font-family: "Roboto", sans-serif!important;
+    width: 100%!important;
+    height: 30rem;
+    display: flex;
+    padding: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 0.3px solid lightgray!important;
+    background-color: whitesmoke;
+    >img{
+        overflow: hidden;
+        width: 100%!important;
+        height: 100%!important;
+        object-fit:cover!important;
+        border-radius:1rem;
+    }
+}
+
+.product-grid{
+    width: 90%;
+    margin-bottom: 5rem;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 1.5rem;
+}
+
+.title{
+    align-self: flex-start;
+}
+
+.product-name>h2{
+    color: blue!important;;
+}
+
+.random-wrapper>h1{
+    width: fit-content;
+    margin-inline:auto;
+    font-weight: 200;
+    /* z-index: 10; */
+    font-family:"Roboto",sans-serif!important;
+}
+
+.random-wrapper{
+    margin-block:3rem;
+}
