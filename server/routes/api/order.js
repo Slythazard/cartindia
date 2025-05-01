@@ -4,7 +4,7 @@ const Mongoose = require('mongoose');
 
 // Bring in Models & Utils
 const Order = require('../../models/order');
-const User = requre('../../models/user');
+const User = require('../../models/user');
 const Cart = require('../../models/cart');
 const Product = require('../../models/product');
 const { auth } = require('../../middleware/auth');
