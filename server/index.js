@@ -25,8 +25,8 @@ app.use(
     origin: [
       'http://localhost:8080',
       'http://localhost:5173',
-      'https://cartindia.vercel.app/',
-      'https://cartindia-slythazards-projects.vercel.app/'
+      'https://cartindia.vercel.app',
+      'https://cartindia-slythazards-projects.vercel.app'
     ],
     credentials: true
   })
