@@ -4,6 +4,7 @@ const Mongoose = require('mongoose');
 
 // Bring in Models & Utils
 const Order = require('../../models/order');
+const User = requre('../../models/user');
 const Cart = require('../../models/cart');
 const Product = require('../../models/product');
 const { auth } = require('../../middleware/auth');
@@ -74,7 +75,13 @@ router.post('/add', auth, async (req, res) => {
       paymentStatus: orderDoc.paymentStatus
     };
 
-    await mailgun.sendEmail(order.user.email, 'order-confirmation', newOrder);
+    const userData = await User.findById(order.user);
+
+    await mailgun.sendEmail(
+      order.userData.email,
+      'order-confirmation',
+      newOrder
+    );
 
     res.status(200).json({
       success: true,
