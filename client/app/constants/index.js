@@ -1,9 +1,9 @@
 export const API_URL = process.env.REACT_APP_API_URL;
 
 export const SOCKET_URL =
-  window.location.host.indexOf('localhost') >= 0
+  window.location.hostname === 'localhost'
     ? 'http://127.0.0.1:3000'
-    : window.location.host;
+    : 'https://cartindia.onrender.com'; // Or your WebSocket server URL
 
 export const ROLES = {
   Admin: 'ROLE ADMIN',
