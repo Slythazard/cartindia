@@ -22,8 +22,6 @@ router.post('/add', auth, async (req, res) => {
     const paymentId = req.body.paymentId;
     const razorpayOrderId = req.body.razorpayOrderId;
 
-    console.log(req.body);
-
     const order = new Order({
       cart,
       user,
@@ -75,7 +73,9 @@ router.post('/add', auth, async (req, res) => {
       paymentStatus: orderDoc.paymentStatus
     };
 
+    console.log(order.user);
     const userData = await User.findById(order.user);
+    console(userData);
 
     await mailgun.sendEmail(userData.email, 'order-confirmation', newOrder);
 
