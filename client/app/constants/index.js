@@ -1,5 +1,5 @@
 export const API_URL =
-  process.env.REACT_APP_API_URL || 'https://cartindia.onrender.com/ap';
+  process.env.REACT_APP_API_URL || 'https://cartindia.onrender.com/api';
 
 export const SOCKET_URL =
   window.location.hostname === 'localhost'
