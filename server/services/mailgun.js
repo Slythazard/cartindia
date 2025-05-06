@@ -1,9 +1,11 @@
 const Mailgun = require('mailgun-js');
-
+require('dotenv').config;
 const template = require('../config/template');
 const keys = require('../config/keys');
 
 const { key, domain, sender } = keys.mailgun;
+
+console.log({ key, domain, sender });
 
 class MailgunService {
   init() {
@@ -20,6 +22,8 @@ class MailgunService {
 
 const mailgun = new MailgunService().init();
 
+console.log('Mailgun initialized:', !!mailgun);
+
 exports.sendEmail = async (email, type, host, data) => {
   try {
     const message = prepareTemplate(type, host, data);
@@ -30,6 +34,8 @@ exports.sendEmail = async (email, type, host, data) => {
       subject: message.subject,
       text: message.text
     };
+
+    console.log('Sending mail with config:', config);
 
     return await mailgun.messages().send(config);
   } catch (error) {
