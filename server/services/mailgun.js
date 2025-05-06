@@ -28,6 +28,8 @@ exports.sendEmail = async (email, type, host, data) => {
   try {
     const message = prepareTemplate(type, host, data);
 
+    console.log(message);
+
     const config = {
       from: `CARTINDIA! <${sender}>`,
       to: email,
