@@ -73,12 +73,13 @@ router.post('/add', auth, async (req, res) => {
       paymentStatus: orderDoc.paymentStatus
     };
 
-    console.log(order.user);
     const userData = await User.findById(order.user);
-    console.log(userData);
-    console.log(userData.email);
     const UserEmail = userData.email;
-    await mailgun.sendEmail(UserEmail, 'order-confirmation', newOrder);
+    await mailgun.sendEmail(
+      (email = UserEmail),
+      (type = 'order-confirmation'),
+      (data = newOrder)
+    );
 
     res.status(200).json({
       success: true,
