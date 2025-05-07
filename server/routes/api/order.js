@@ -77,7 +77,7 @@ router.post('/add', auth, async (req, res) => {
     const userData = await User.findById(order.user);
     console.log(userData);
     console.log(userData.email);
-    email = userData.email;
+    const email = userData.email;
     await mailgun.sendEmail(email, 'order-confirmation', newOrder);
 
     res.status(200).json({

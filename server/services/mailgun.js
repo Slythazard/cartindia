@@ -11,7 +11,7 @@ console.log({ key, domain, sender });
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({
   username: 'api',
-  key: process.env.MAILGUN_KEY
+  key
 });
 
 // class MailgunService {
