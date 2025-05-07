@@ -20,3 +20,5 @@ yarn-error.log*
 .github
 .prettierignore
 .vscode
+
+./server/api/routes/email_test_check

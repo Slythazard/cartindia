@@ -1,4 +1,5 @@
-const Mailgun = require('mailgun-js');
+const formData = require('form-data');
+const Mailgun = require('mailgun.js');
 require('dotenv').config();
 const template = require('../config/template');
 const keys = require('../config/keys');
@@ -7,20 +8,26 @@ const { key, domain, sender } = keys.mailgun;
 
 console.log({ key, domain, sender });
 
-class MailgunService {
-  init() {
-    try {
-      return new Mailgun({
-        apiKey: key,
-        domain: domain
-      });
-    } catch (error) {
-      console.warn('Missing mailgun keys');
-    }
-  }
-}
+const mailgun = new Mailgun(formData);
+const mg = mailgun.client({
+  username: 'api',
+  key: process.env.MAILGUN_API_KEY
+});
 
-const mailgun = new MailgunService().init();
+// class MailgunService {
+//   init() {
+//     try {
+//       return new Mailgun({
+//         apiKey: key,
+//         domain: domain
+//       });
+//     } catch (error) {
+//       console.warn('Missing mailgun keys');
+//     }
+//   }
+// }
+
+// const mailgun = new MailgunService().init();
 
 console.log('Mailgun initialized:', !!mailgun);
 
@@ -39,7 +46,7 @@ exports.sendEmail = async (email, type, host, data) => {
 
     console.log('Sending mail with config:', config);
 
-    return await mailgun.messages().send(config);
+    return await mg.messages.create(domain, config);
   } catch (error) {
     return error;
   }
