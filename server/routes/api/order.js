@@ -8,7 +8,7 @@ const User = require('../../models/user');
 const Cart = require('../../models/cart');
 const Product = require('../../models/product');
 const { auth } = require('../../middleware/auth');
-const mailgun = require('../../services/mailgun');
+const { sendEmail } = require('../../services/mailgun.js');
 const store = require('../../utils/store');
 const { ROLES, CART_ITEM_STATUS } = require('../../constants');
 const { response } = require('express');
@@ -40,6 +40,7 @@ router.post('/add', auth, async (req, res) => {
     });
 
     const orderDoc = await order.save();
+    // console.log(orderDoc);
 
     // try {
     const cartDoc = await Cart.findById(orderDoc.cart).populate({
@@ -53,9 +54,9 @@ router.post('/add', auth, async (req, res) => {
     // error: error
     // });
     // }
-
+    const userData = await User.findById(order.user);
     const newOrder = {
-      _id: orderDoc._id,
+      _id: `${orderDoc._id}`,
       created: orderDoc.created,
       user: orderDoc.user,
       total: orderDoc.total,
@@ -72,14 +73,16 @@ router.post('/add', auth, async (req, res) => {
       razorpayOrderId: orderDoc.razorpayOrderId,
       paymentStatus: orderDoc.paymentStatus
     };
+    // console.log(newOrder);
+    const userEmail = `${userData.email}`;
+    try {
+      await sendEmail(userEmail, 'order-confirmation', '', newOrder);
+    } catch (error) {
+      // console.error('Mailgun send error:', error);
+      return res.status(500).json({ error: 'Email sending failed' });
+    }
 
-    const userData = await User.findById(order.user);
-    const UserEmail = userData.email;
-    await mailgun.sendEmail(
-      (email = UserEmail),
-      (type = 'order-confirmation'),
-      (data = newOrder)
-    );
+    // console.log(userEmail);
 
     res.status(200).json({
       success: true,

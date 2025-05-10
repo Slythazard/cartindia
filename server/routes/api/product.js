@@ -296,6 +296,7 @@ router.get(
 // GET /api/product/random
 router.get('/random', optionalAuth, async (req, res) => {
   try {
+    // console.log(process.env.MONGO_URI);
     const count = parseInt(req.query.count) || 4;
     const randomProducts = await Product.aggregate([
       { $sample: { size: count } }

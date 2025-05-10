@@ -15,6 +15,7 @@ const reviewRoutes = require('./review');
 const wishlistRoutes = require('./wishlist');
 const carouselRoutes = require('./carousel-data');
 const paymentRoutes = require('./payment');
+// const testRoute = require('./test');
 
 // auth routes
 router.use('/auth', authRoutes);
@@ -59,5 +60,7 @@ router.use('/wishlist', wishlistRoutes);
 router.use('/carousel-data', carouselRoutes);
 
 router.use('/payment', paymentRoutes);
+
+// router.use('/test', testRoute);
 
 module.exports = router;

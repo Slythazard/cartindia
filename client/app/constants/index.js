@@ -1,10 +1,9 @@
-export const API_URL =
-  process.env.API_URL || 'https://cartindia.onrender.com/api';
+export const API_URL = process.env.API_URL;
 
 export const SOCKET_URL =
   window.location.hostname === 'localhost'
-    ? 'http://127.0.0.1:3000'
-    : 'https://cartindia.onrender.com'; // Or your WebSocket server URL
+    ? `http://localhost:${process.env.PORT}`
+    : API_URL; // Or your WebSocket server URL
 
 export const ROLES = {
   Admin: 'ROLE ADMIN',

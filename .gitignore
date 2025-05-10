@@ -21,4 +21,4 @@ yarn-error.log*
 .prettierignore
 .vscode
 
-./server/api/routes/email_test_check
+./server/routes/api/test.js

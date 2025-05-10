@@ -12,7 +12,8 @@ function RandomHomepageProduct(){
         fetch(`${API_URL}/product/random`)
           .then(res => res.json())
           .then(data => {
-            console.log('Products:', data);
+            // console.log(API_URL)
+            // console.log('Products:', data);
             setProductsData(data);
           })
           .catch(err => console.error('Failed to fetch offers:', err));

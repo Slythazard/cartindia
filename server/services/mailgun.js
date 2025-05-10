@@ -6,45 +6,37 @@ const keys = require('../config/keys');
 
 const { key, domain, sender } = keys.mailgun;
 
-console.log({ key, domain, sender });
+// console.log({ key, domain, sender });
 
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({
   username: 'api',
-  key
+  key: key
 });
 
-// class MailgunService {
-//   init() {
-//     try {
-//       return new Mailgun({
-//         apiKey: key,
-//         domain: domain
-//       });
-//     } catch (error) {
-//       console.warn('Missing mailgun keys');
-//     }
-//   }
-// }
-
-// const mailgun = new MailgunService().init();
-
 console.log('Mailgun initialized:', !!mailgun);
+
+// exports.sendEmail(
+//   'your@email.com',
+//   'reset',
+//   'localhost:3000',
+//   'test-reset-token'
+// );
 
 exports.sendEmail = async (email, type, host, data) => {
   try {
     const message = prepareTemplate(type, host, data);
 
-    console.log(message);
+    // console.log(message);
 
     const config = {
-      from: `CARTINDIA! <${sender}>`,
+      from: `CARTINDIA <${sender}>`,
       to: email,
       subject: message.subject,
       text: message.text
     };
 
-    console.log('Sending mail with config:', config);
+    // console.log('Sending mail with config:', config);
 
     return await mg.messages.create(domain, config);
   } catch (error) {

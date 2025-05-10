@@ -1,7 +1,7 @@
 module.exports = {
   app: {
     name: 'cartindia',
-    apiURL: `${process.env.BASE_API_URL}`,
+    apiURL: process.env.BASE_API_URL,
     clientURL: process.env.CLIENT_URL
   },
   port: process.env.PORT || 3000,

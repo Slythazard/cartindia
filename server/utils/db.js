@@ -8,12 +8,10 @@ const { database } = keys;
 const setupDB = async () => {
   try {
     // Connect to MongoDB
-    mongoose.set('useCreateIndex', true);
-    mongoose
+    await mongoose
       .connect(database.url, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false
+        // useNewUrlParser: true,
+        // useUnifiedTopology: true
       })
       .then(() =>
         console.log(`${chalk.green('✓')} ${chalk.blue('MongoDB Connected!')}`)
